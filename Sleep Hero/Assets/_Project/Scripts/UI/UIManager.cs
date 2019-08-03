@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
+
+    public Image sleepFill;
+
+    public GameObject[] HealthHearts;
+
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +22,47 @@ public class UIManager : MonoBehaviour
     {
         
     }
-}
+
+    public void RefreshUI(){
+        
+        sleepFill.fillAmount = GameManagerGeral.instance.actualSleep / GameManagerGeral.instance.maxSleep;
+        
+
+
+    }
+
+    public void RefreshPlayerHealth(int health){
+        Debug.Log( "Atualizando vida" + health);
+        if(health == 0){
+            HealthHearts[0].SetActive(false);
+            HealthHearts[1].SetActive(false);
+            HealthHearts[2].SetActive(false);
+        }
+        
+        if(health == 1){
+            HealthHearts[0].SetActive(true);
+            HealthHearts[1].SetActive(false);
+            HealthHearts[2].SetActive(false);
+        }
+        
+        if(health == 2){
+            HealthHearts[0].SetActive(true);
+            HealthHearts[1].SetActive(true);
+            HealthHearts[2].SetActive(false);
+        }
+
+        if(health == 3){
+            HealthHearts[0].SetActive(true);
+            HealthHearts[1].SetActive(true);
+            HealthHearts[2].SetActive(true);
+        }
+        
+        
+        
+      
+
+    }
+
+
+
+  }

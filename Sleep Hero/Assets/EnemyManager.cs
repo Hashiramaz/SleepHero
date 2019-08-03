@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    
+    [Header("Settings")]
     public int health;
+
+    public float sleepReward =1f;
     public float speed;
 
-
+    [Header("Knockback")]
     public float knockback;
     public float knockBackLength;
     public float knockbackCount;
@@ -75,13 +79,14 @@ public class EnemyManager : MonoBehaviour
         if(health <= 0){
             Die();
         }
-        Debug.Log("Damage Taken");
+
 
     }
 
 
 
     public void Die(){
+        GameManagerGeral.instance.AddSleepReward(sleepReward);
         Destroy(gameObject);
     }
 

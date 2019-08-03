@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [Header("Attributes")]
-    public float health = 5f;
+    public float health = 3f;
+
+    public float maxHealth =3f;
 
     [Header("References")]
     public GameObject graphics;
@@ -24,18 +26,19 @@ public class PlayerManager : MonoBehaviour
     public float horizontalVelocity;
     public float verticalVelocity;
 
-
+    public GameObject Gamemanager;
 
     public float knockback;
     public float knockBackLength;
     public float knockbackCount;
     public bool knockfromRight;
 
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManagerGeral.instance.uIManager.RefreshPlayerHealth((int)health);
     }
 
     // Update is called once per frame
@@ -65,11 +68,15 @@ public class PlayerManager : MonoBehaviour
     
     }
     void TakeDamage(float amount){
-        //Debug.Log("Player Damage Taken");
+       
         
         
         
         health -= amount;
+        
+        
+
+        GameManagerGeral.instance.uIManager.RefreshPlayerHealth((int)health);
         if(health <= 0){
             Die();
         }
@@ -78,7 +85,8 @@ public class PlayerManager : MonoBehaviour
 
     void Die(){
 
-
+        Debug.Log("MORREU");
+        GameManagerGeral.instance.StopGame();
 
     }
 

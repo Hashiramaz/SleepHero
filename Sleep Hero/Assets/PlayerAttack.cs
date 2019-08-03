@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
             //        enemiesToDamage[i].GetComponent<EnemyManager>().TakeDamage(damage);
             //    }
                 
-                Debug.Log("Attacking");
+//                Debug.Log("Attacking");
                
                
                
