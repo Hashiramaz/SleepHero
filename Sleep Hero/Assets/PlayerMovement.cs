@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-		if (Input.GetButtonDown("Jump"))
+		/*if (Input.GetButtonDown("Jump"))
 		{
 			jump = true;
-		}
+		}*/
 
 		// if (Input.GetButtonDown("Crouch"))
 		// {
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 	void FixedUpdate ()
 	{
 		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-		jump = false;
+		controller.Move(horizontalMove * Time.fixedDeltaTime,crouch,jump);
+		//jump = false;
 	}
 }
