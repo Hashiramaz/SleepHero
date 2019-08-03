@@ -14,9 +14,11 @@ public class PlayerAttack : MonoBehaviour
 
    public int damage;
 
+   public GameObject attackSprite;
+
    private void Update() {
        if( timeBtwAttack <= 0){
-           if(Input.GetKeyDown(KeyCode.LeftShift)){
+           if(Input.GetKeyDown(KeyCode.Mouse0)){
 
                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position, attackRange,whatIsEnemy );
 
@@ -24,8 +26,9 @@ public class PlayerAttack : MonoBehaviour
                {
                    enemiesToDamage[i].GetComponent<EnemyManager>().TakeDamage(damage);
                }
-
+                
                Debug.Log("Attacking");
+               ActivateAttackSprite();
            }
 
            timeBtwAttack = startTimeBtwAttack;
@@ -41,5 +44,17 @@ public class PlayerAttack : MonoBehaviour
    
        Gizmos.color = Color.red;
        Gizmos.DrawWireSphere(attackpos.position,attackRange);
+   }
+
+
+   public void ActivateAttackSprite(){
+       StartCoroutine(StartAttackSprite());
+
+   }
+
+   IEnumerator StartAttackSprite(){
+       attackSprite.SetActive(true);
+       yield return new WaitForSeconds (0.3f);
+       attackSprite.SetActive(false);
    }
 }

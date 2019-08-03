@@ -20,7 +20,15 @@ public class EnemyManager : MonoBehaviour
 
     public void TakeDamage(int damage){
         health -= damage;
+
+        if(health <= 0){
+            Die();
+        }
         Debug.Log("Damage Taken");
 
+    }
+
+    public void Die(){
+        Destroy(gameObject);
     }
 }
