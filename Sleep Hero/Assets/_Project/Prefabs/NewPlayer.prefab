@@ -263,6 +263,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  graphics: {fileID: 7003013261937602949}
+  m_rb: {fileID: 0}
+  horizontalVelocity: 0
+  verticalVelocity: 0
 --- !u!114 &1534855794541958334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +287,8 @@ MonoBehaviour:
     m_Bits: 1024
   attackRange: 0.7
   damage: 1
-  attackSprite: {fileID: 8829935039959495432}
+  attackObject: {fileID: 8829935039959495432}
+  isAttacking: 0
 --- !u!114 &6952453141368654846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,12 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49386178e168d3846ab24ad41f3924c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroundCheck: {fileID: 0}
+  GroundCheck: {fileID: 7003013262721507824}
   checkRadius: 0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
-  jumpForce: 8
+  jumpForce: 4.16
   jumpTime: 0.3
 --- !u!1 &7003013262721507825
 GameObject:
@@ -333,6 +338,35 @@ Transform:
   m_Father: {fileID: 7003013262606782815}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1295870472
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829935039959495432}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.000000044703484}
+  m_Size: {x: 0.39, y: 0.5700001}
+  m_Direction: 0
+--- !u!114 &1295870471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829935039959495432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f961653283a46cc4cb5870a10fdaf42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 1
 --- !u!1001 &5247573150667237583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -419,11 +453,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.333
-      objectReference: {fileID: 0}
-    - target: {fileID: 3627971487319366599, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3627971487319366596, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
