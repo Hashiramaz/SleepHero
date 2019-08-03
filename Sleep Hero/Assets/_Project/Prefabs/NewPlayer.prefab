@@ -282,7 +282,7 @@ MonoBehaviour:
     m_Bits: 1024
   attackRange: 1.16
   damage: 1
-  attackSprite: {fileID: 0}
+  attackSprite: {fileID: 8829935039959495432}
 --- !u!1 &7003013262721507825
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,22 +343,22 @@ PrefabInstance:
     - target: {fileID: 3627971487325300250, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3627971487325300250, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3627971487325300250, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000292013
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3627971487325300250, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3627971487325300250, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
@@ -378,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 3627971487325300250, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3627971487325300250, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
         type: 3}
@@ -406,6 +406,12 @@ Transform:
 --- !u!4 &8829935039263623855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3627971488569664096, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5247573150667237583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8829935039959495432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3627971487319366599, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
     type: 3}
   m_PrefabInstance: {fileID: 5247573150667237583}
   m_PrefabAsset: {fileID: 0}
