@@ -90,10 +90,10 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    public void FlipPlayer(bool lookRight){
+    // public void FlipPlayer(bool lookRight){
         
-            graphics.GetComponent<SpriteRenderer>().flipX = !lookRight;
-    }
+    //         graphics.GetComponent<SpriteRenderer>().flipX = !lookRight;
+    // }
 
     public void RefreshVelocity(){
         horizontalVelocity = rb.velocity.x;

@@ -13,6 +13,12 @@ public class EnemySpawner : MonoBehaviour
     public bool isSpawning;
 
     public bool isVisible;
+
+
+    UnityEngine.Camera cam;
+
+
+
     public void SpawnEnemy(){
 
 
@@ -36,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+         cam = UnityEngine.Camera.main;
         //StartSpawn();
     }
 
@@ -51,14 +58,21 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-    void OnBecameInvisible()
-    {
-        isVisible = false;
-        Debug.Log("IsInvisible");
+    private void LateUpdate() {
+        UpdateVisibility();
     }
 
-    void OnBecameVisible()
+    public void UpdateVisibility(){
+        Vector3 viewPos = cam.WorldToViewportPoint(transform.position);
+    if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0)
     {
+        //Debug.Log("APARECEU!");
+         // Your object is in the range of the camera, you can apply your behaviour
         isVisible = true;
     }
-}
+    else{
+        //Debug.Log("SUMIU");
+    }
+        isVisible = false;
+    }
+ }
