@@ -14,20 +14,26 @@ public class PlayerAttack : MonoBehaviour
 
    public int damage;
 
-   public GameObject attackSprite;
+   public GameObject attackObject;
+
+   public bool isAttacking;
+   
 
    private void Update() {
        if( timeBtwAttack <= 0){
            if(Input.GetKeyDown(KeyCode.Mouse0)){
 
-               Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position, attackRange,whatIsEnemy );
+            //    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackpos.position, attackRange,whatIsEnemy );
 
-               for (int i = 0; i < enemiesToDamage.Length; i++)
-               {
-                   enemiesToDamage[i].GetComponent<EnemyManager>().TakeDamage(damage);
-               }
+            //    for (int i = 0; i < enemiesToDamage.Length; i++)
+            //    {
+            //        enemiesToDamage[i].GetComponent<EnemyManager>().TakeDamage(damage);
+            //    }
                 
-               Debug.Log("Attacking");
+                Debug.Log("Attacking");
+               
+               
+               
                ActivateAttackSprite();
            }
 
@@ -42,19 +48,24 @@ public class PlayerAttack : MonoBehaviour
    private void OnDrawGizmosSelected() {
        
    
-       Gizmos.color = Color.red;
-       Gizmos.DrawWireSphere(attackpos.position,attackRange);
+      // Gizmos.color = Color.red;
+       //Gizmos.DrawWireSphere(attackpos.position,attackRange);
    }
 
 
    public void ActivateAttackSprite(){
-       StartCoroutine(StartAttackSprite());
+       StartCoroutine(StartWeaponObject());
 
    }
 
-   IEnumerator StartAttackSprite(){
-       attackSprite.SetActive(true);
+   IEnumerator StartWeaponObject(){
+       attackObject.SetActive(true);
+
+        isAttacking = true;
+        
        yield return new WaitForSeconds (0.3f);
-       attackSprite.SetActive(false);
+       attackObject.SetActive(false);
+
+       isAttacking =  false;
    }
 }
