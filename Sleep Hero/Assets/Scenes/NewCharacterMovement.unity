@@ -528,6 +528,12 @@ SpriteShapeRenderer:
   m_LocalAABB:
     m_Center: {x: 0.033517122, y: -0.7480036, z: -0.0005}
     m_Extent: {x: 1.0924132, y: 0.355453, z: 0.0005}
+--- !u!1 &320616186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7003013261937602949, guid: e1e9c20890c37ca4aa5c8c2b18de78c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7003013262048295247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &424842101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2001,16 @@ PrefabInstance:
     - target: {fileID: 7003013262606782815, guid: e1e9c20890c37ca4aa5c8c2b18de78c4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176593376393628510, guid: e1e9c20890c37ca4aa5c8c2b18de78c4,
+        type: 3}
+      propertyPath: graphics
+      value: 
+      objectReference: {fileID: 320616186}
+    - target: {fileID: 8829935039959495432, guid: e1e9c20890c37ca4aa5c8c2b18de78c4,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

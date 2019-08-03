@@ -10,6 +10,20 @@ public class PlayerManager : MonoBehaviour
     [Header("References")]
     public GameObject graphics;
 
+    public Rigidbody2D rb{
+        get{
+            if(m_rb == null)
+                m_rb = GetComponent<Rigidbody2D>();
+                return m_rb;
+        }
+    }
+
+    public Rigidbody2D m_rb;
+
+    [Header("Debug Values")]
+    public float horizontalVelocity;
+    public float verticalVelocity;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        RefreshVelocity();
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -48,6 +62,11 @@ public class PlayerManager : MonoBehaviour
     public void FlipPlayer(bool lookRight){
         
             graphics.GetComponent<SpriteRenderer>().flipX = !lookRight;
+    }
+
+    public void RefreshVelocity(){
+        horizontalVelocity = rb.velocity.x;
+        verticalVelocity = rb.velocity.y;
     }
 
 
