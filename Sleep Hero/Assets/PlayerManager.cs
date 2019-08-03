@@ -6,6 +6,11 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Attributes")]
     public float health = 5f;
+
+    [Header("References")]
+    public GameObject graphics;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +43,11 @@ public class PlayerManager : MonoBehaviour
 
 
 
+    }
+
+    public void FlipPlayer(bool lookRight){
+        
+            graphics.GetComponent<SpriteRenderer>().flipX = !lookRight;
     }
 
 

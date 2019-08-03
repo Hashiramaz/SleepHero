@@ -280,7 +280,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 1024
-  attackRange: 1.16
+  attackRange: 0.7
   damage: 1
   attackSprite: {fileID: 8829935039959495432}
 --- !u!1 &7003013262721507825
@@ -394,6 +394,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3.786203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627971488569664096, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.333
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627971487319366599, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627971487319366596, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627971487319366596, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.57609344
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627971487319366596, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.61699
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627971487319366596, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61699
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b37aa7a55a49f4ebf4ce9ec8dd2f1b, type: 3}
