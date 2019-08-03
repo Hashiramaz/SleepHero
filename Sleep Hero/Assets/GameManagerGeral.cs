@@ -70,7 +70,7 @@ public    void StartGame(){
     
     public void StopGame(){
         isPlaying = false;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("FinalLevel");
 
     }   
 
