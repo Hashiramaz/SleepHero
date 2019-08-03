@@ -11,13 +11,16 @@ public class EnemySpawner : MonoBehaviour
     public float spawnInterval = 4f;
     
     public bool isSpawning;
+
+    public bool isVisible;
     public void SpawnEnemy(){
 
 
 
         GameObject enemy = Instantiate(enemyPrefab, spawnArea.GetRandomPoint(),transform.rotation);
         
-        enemy.GetComponent<AIDestinationSetter>().target = playerreference.transform;
+        //enemy.GetComponent<AIDestinationSetter>().target = playerreference.transform;
+        enemy.GetComponent<EnemyAI>().target = playerreference.transform;
     }
 
 
@@ -33,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartSpawn();
+        //StartSpawn();
     }
 
 
@@ -45,5 +48,17 @@ public class EnemySpawner : MonoBehaviour
     public void StopSpawn(){
         StopCoroutine("SpawnEnemyRoutine");
         isSpawning = false;
+    }
+
+
+    void OnBecameInvisible()
+    {
+        isVisible = false;
+        Debug.Log("IsInvisible");
+    }
+
+    void OnBecameVisible()
+    {
+        isVisible = true;
     }
 }
