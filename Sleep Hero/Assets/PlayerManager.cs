@@ -25,6 +25,13 @@ public class PlayerManager : MonoBehaviour
     public float verticalVelocity;
 
 
+
+    public float knockback;
+    public float knockBackLength;
+    public float knockbackCount;
+    public bool knockfromRight;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +46,29 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
     
+
+
+
     if(other.gameObject.CompareTag("Enemy")){
         TakeDamage(1);
+
+        knockbackCount = knockBackLength;
+        if(other.transform.position.x > transform.position.x)
+            knockfromRight = true;
+            else
+            {
+                knockfromRight = false;
+            }
+
+
     }
     
     }
     void TakeDamage(float amount){
-        Debug.Log("Player Damage Taken");
+        //Debug.Log("Player Damage Taken");
+        
+        
+        
         health -= amount;
         if(health <= 0){
             Die();
@@ -68,6 +91,9 @@ public class PlayerManager : MonoBehaviour
         horizontalVelocity = rb.velocity.x;
         verticalVelocity = rb.velocity.y;
     }
+
+
+
 
 
 
