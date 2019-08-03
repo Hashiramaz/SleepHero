@@ -10,6 +10,9 @@ public class PlayerInput : MonoBehaviour
     public float vertical;
 
     public float speed = 5f;
+
+    public Animator PlayerAnimationController; //Wolter - Added animator
+
     public Rigidbody2D rb;
 
 
@@ -27,6 +30,8 @@ public class PlayerInput : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         UpdatePlayerMovement();
+
+        
 
 
     }
@@ -51,6 +56,8 @@ public class PlayerInput : MonoBehaviour
             Vector2 pos  = new Vector2(transform.position.x, transform.position.y) + vectorHorizontalmovement * Time.fixedDeltaTime;
             rb.MovePosition(pos);
         }
+
+        PlayerAnimationController.SetFloat("speed",Mathf.Abs(horizontal));
     }
 
     
