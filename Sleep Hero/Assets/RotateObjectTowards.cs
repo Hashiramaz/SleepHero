@@ -5,6 +5,16 @@ using UnityEngine;
 public class RotateObjectTowards : MonoBehaviour
 {
     public float speed;
+
+    public PlayerAttack playerAttack{
+        get{
+            if(m_playerattack == null)
+                m_playerattack = transform.root.GetComponent<PlayerAttack>();
+                return m_playerattack;
+        }
+    }
+    public PlayerAttack m_playerattack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +24,8 @@ public class RotateObjectTowards : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateRotation();
+        if(!playerAttack.isAttacking)
+            UpdateRotation();
     }
 
     public void UpdateRotation(){
