@@ -52,10 +52,10 @@ public class Player : MonoBehaviour {
         Vector3 dir = cam.ScreenToWorldPoint(Input.mousePosition) - _Blade.transform.position;
         dir.Normalize();
 
-        if (cam.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x + 0.2f)
-            mirror = false;
-        if (cam.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x - 0.2f)
-            mirror = true;
+        // if (cam.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x + 0.2f)
+        //     mirror = false;
+        // if (cam.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x - 0.2f)
+        //     mirror = true;
 
         if (!mirror)
         {
@@ -94,11 +94,26 @@ public class Player : MonoBehaviour {
             _canJump = false;
             _isJump = false;
         }
+
+
+        if(rig.velocity.x > 0 && mirror){
+            mirror = false;
+        }
+        if(rig.velocity.x < 0 && !mirror){
+            mirror = true;
+        }
+
+
+
     }
 
     public bool IsMirror()
     {
         return mirror;
+    }
+
+    public void FlipPlayer(){
+
     }
 
     void OnDrawGizmos()
