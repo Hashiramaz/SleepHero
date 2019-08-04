@@ -19,6 +19,8 @@ public class GameManagerGeral : MonoBehaviour
 
     public static GameManagerGeral instance;
 
+    public SleepCameraEffect sleepCamera;
+
 
     
 
@@ -106,7 +108,7 @@ private void Start() {
             yield return new WaitForSeconds(Sleepinterval);
 
             accumulateReward++;
-            if(accumulateReward > 100){
+            if(accumulateReward > 10){
 
                 AddScore(accumulateReward/10);
                 accumulateReward = 0;
@@ -157,6 +159,7 @@ private void Start() {
 
         uIManager.ActivateLevelWarning();
         AddScore(50);
+        FindObjectOfType<AudioManager>().Play("Challengeup");
         yield return new WaitForSeconds (2f);
         uIManager.DesactivateLevelWarning();
       }
@@ -182,5 +185,13 @@ private void Start() {
         uIManager.SetScore(score);
     }
 
+    public void SetSleepEffect(){
+        sleepCamera.SetSleep();
+
+    }
+
+    public void SetWakedupEffect(){
+        sleepCamera.SetWakedUp();
+    }
 
 }
