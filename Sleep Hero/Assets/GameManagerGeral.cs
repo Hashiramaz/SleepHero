@@ -15,7 +15,7 @@ public class GameManagerGeral : MonoBehaviour
     public float maxSleep;
     public float sleepLoseAmount;
 
-
+    public int score;
 
     public static GameManagerGeral instance;
 
@@ -38,6 +38,8 @@ public class GameManagerGeral : MonoBehaviour
     public float levelInterval = 25f;
 
     public bool playerSleeping;
+
+    public int accumulateReward;
 
 
 private void Awake() {
@@ -90,6 +92,7 @@ private void Start() {
 
         actualSleep = startSleep;
         SetDifficulty(1);
+        ResetScore();
         
     }
 
@@ -102,6 +105,12 @@ private void Start() {
             uIManager.RefreshUI();
             yield return new WaitForSeconds(Sleepinterval);
 
+            accumulateReward++;
+            if(accumulateReward > 100){
+
+                AddScore(accumulateReward/10);
+                accumulateReward = 0;
+            }
 
         }
     }
@@ -115,6 +124,8 @@ private void Start() {
 
     public void AddSleepReward(float amount){
         actualSleep +=amount;
+
+        AddScore ((int)amount * 10);
     }
 
 
@@ -145,6 +156,7 @@ private void Start() {
         }
 
         uIManager.ActivateLevelWarning();
+        AddScore(50);
         yield return new WaitForSeconds (2f);
         uIManager.DesactivateLevelWarning();
       }
@@ -159,6 +171,16 @@ private void Start() {
         }
     }
 
+    void AddScore(int amount){
+        score =+ amount;
+
+        uIManager.SetScore(score);
+    }
+
+    void ResetScore(){
+        score = 0;
+        uIManager.SetScore(score);
+    }
 
 
 }

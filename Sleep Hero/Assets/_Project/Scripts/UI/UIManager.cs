@@ -84,6 +84,11 @@ public class UIManager : MonoBehaviour
         warningLevel.SetActive(false);
     }
 
+    public void SetScore(int score){
+    Score.text = score.ToString();
+
+    }
+
 
 
 
