@@ -42,6 +42,8 @@ public class Player : MonoBehaviour {
                 _canJump = true;
                 _canWalk = true;
             }
+        
+//            Debug.Log(_hit.transform.gameObject.name);
         }
         else _canJump = false;
 
@@ -68,13 +70,13 @@ public class Player : MonoBehaviour {
         {
             rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.localScale = new Vector3(_startScale, _startScale, 1);
-            _Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
+            //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
         }
         if (mirror)
         {
             rot = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg;
             transform.localScale = new Vector3(-_startScale, _startScale, 1);
-            _Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
+            //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
         }
 
         if (_inputAxis.x != 0)
