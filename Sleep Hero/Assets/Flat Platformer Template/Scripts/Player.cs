@@ -13,6 +13,17 @@ public class Player : MonoBehaviour {
     public Camera cam;
     public bool mirror;
 
+    public SleepManager sleepManager{
+        get{
+            if(m_sleepManager == null){
+                m_sleepManager = GetComponent<SleepManager>();
+            }
+                return m_sleepManager;
+        }
+    }
+
+    public SleepManager m_sleepManager;
+
     public Animator HeroBody;
 
 
@@ -46,36 +57,60 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
-        if (_hit = Physics2D.Linecast(new Vector2(_GroundCast.position.x, _GroundCast.position.y + 0.2f), _GroundCast.position))
-        {
-            if (!_hit.transform.CompareTag("Player"))
-            {
-                _canJump = true;
-                _canWalk = true;
-            
-                anim.SetBool("IsGrounded", true); 
-            }
-        
-//            Debug.Log(_hit.transform.gameObject.name);
-        }
-        else{
-        _canJump = false;
-        anim.SetBool("IsGrounded",false);
-        } 
-            
+        if(!sleepManager.playerWantsSleep){
 
-        _inputAxis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (_inputAxis.y > 0 && _canJump)
-        {
-            _canWalk = false;
-            _isJump = true;
-        }
-        HeroBody.SetFloat("HSpeed",Mathf.Abs(rig.velocity.x));
-        anim.SetFloat("YVelocity",rig.velocity.y);
+            if(!sleepManager.isSleeping){
+                
+                if (_hit = Physics2D.Linecast(new Vector2(_GroundCast.position.x, _GroundCast.position.y + 0.2f), _GroundCast.position))
+                {
+                    if (!_hit.transform.CompareTag("Player"))
+                    {
+                        _canJump = true;
+                        _canWalk = true;
+                    
+                        anim.SetBool("IsGrounded", true); 
+                    }
+                
+        //            Debug.Log(_hit.transform.gameObject.name);
+                }
+                else{
+                _canJump = false;
+                anim.SetBool("IsGrounded",false);
+                } 
+                    
+
+                _inputAxis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                if (_inputAxis.y > 0 && _canJump)
+                {
+                    _canWalk = false;
+                    _isJump = true;
+                }
+                HeroBody.SetFloat("HSpeed",Mathf.Abs(rig.velocity.x));
+                anim.SetFloat("YVelocity",rig.velocity.y);
+        
+                }
+            }
     }
 
     void FixedUpdate()
     {
+        if(!sleepManager.playerWantsSleep){
+            if(!sleepManager.isSleeping){
+
+                UpdateMirror();
+
+                UpdateMovement();
+
+                UpdateJump();
+
+                UpdateMirrorAgain();
+
+                }
+            }
+
+    }
+
+    void UpdateMirror(){
         Vector3 dir = cam.ScreenToWorldPoint(Input.mousePosition) - _Blade.transform.position;
         dir.Normalize();
 
@@ -96,8 +131,10 @@ public class Player : MonoBehaviour {
             transform.localScale = new Vector3(-_startScale, _startScale, 1);
             //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
         }
+    }
 
-        if (_inputAxis.x != 0)
+void UpdateMovement(){
+     if (_inputAxis.x != 0)
         {
             rig.velocity = new Vector2(_inputAxis.x * WalkSpeed * Time.deltaTime, rig.velocity.y);
 
@@ -112,8 +149,10 @@ public class Player : MonoBehaviour {
         {
             rig.velocity = new Vector2(0, rig.velocity.y);
         }
-
-        if (_isJump)
+    }
+   
+    void UpdateJump(){
+  if (_isJump)
         {
             
             rig.AddForce(new Vector2(0, JumpForce));
@@ -125,17 +164,18 @@ public class Player : MonoBehaviour {
             anim.SetTrigger("Jump");
         }
 
+    }
 
+ void UpdateMirrorAgain(){
+        
         if(rig.velocity.x > 0 && mirror){
             mirror = false;
         }
         if(rig.velocity.x < 0 && !mirror){
             mirror = true;
         }
-
-
-
     }
+    
 
     public bool IsMirror()
     {

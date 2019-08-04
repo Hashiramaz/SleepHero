@@ -26,6 +26,7 @@ public class GameManagerGeral : MonoBehaviour
     [Header("Settings")]
     public float startSleep =100f;
 
+    public float sleepAddAmount = -3f;
     //public int level;
     public float[] Difficulty;
     public int maxLevel=5;
@@ -35,6 +36,8 @@ public class GameManagerGeral : MonoBehaviour
     public float Sleepinterval;
     
     public float levelInterval = 25f;
+
+    public bool playerSleeping;
 
 
 private void Awake() {
@@ -58,6 +61,8 @@ private void Start() {
 
         if(Input.GetKeyDown(KeyCode.Y))
             StopGame();
+
+        RefreshPlayerSleep();
 
     }
 
@@ -134,7 +139,8 @@ private void Start() {
 
         yield return new WaitForSeconds(levelInterval);
         if(actualLevel < maxLevel){
-            SetDifficulty (actualLevel + 1);
+            actualLevel ++;
+           // SetDifficulty (actualLevel);
             
         }
 
@@ -145,6 +151,13 @@ private void Start() {
     
     }
 
+    void RefreshPlayerSleep(){
+        if(playerSleeping){
+            sleepLoseAmount = sleepAddAmount;
+        }else{
+            SetDifficulty(actualLevel);
+        }
+    }
 
 
 
