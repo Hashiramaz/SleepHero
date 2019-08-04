@@ -15,9 +15,8 @@ UnityEngine.Camera cam;
 
  private void Update() {
     //check for visibility
-    UpdateVisibility();
-    if(isVisible)
-    {
+   
+    
         if(transform.position.x < target.position.x)
         {
             if(movingRight)
@@ -52,10 +51,9 @@ UnityEngine.Camera cam;
             movingRight = false;
             }
         }
-    }
-    else
-    {
-    transform.Translate(Vector2.right * speed * Time.deltaTime);
+    
+   
+    /* transform.Translate(Vector2.right * speed * Time.deltaTime);
     RaycastHit2D goundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distanceDetection);
     if(goundInfo.collider == false){
         if(movingRight == true){
@@ -65,8 +63,8 @@ UnityEngine.Camera cam;
             transform.eulerAngles = new Vector3(0f,0f,0f);
             movingRight = true;
         }
-     }
-     }
+    }*/
+     
     
  }
 
@@ -74,17 +72,6 @@ UnityEngine.Camera cam;
     {
         //yes
     }
-  public void UpdateVisibility(){
-        Vector3 viewPos = cam.WorldToViewportPoint(transform.position);
-    if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0)
-    {
-        //Debug.Log("APARECEU!");
-         // Your object is in the range of the camera, you can apply your behaviour
-        isVisible = true;
-    }
-    else{
-        //Debug.Log("SUMIU");
-    }
-        isVisible = false;
- }
+ 
+ 
 }
