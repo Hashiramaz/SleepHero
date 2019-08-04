@@ -17,6 +17,8 @@ public class EnemyManager : MonoBehaviour
     public float knockbackCount;
     public bool knockfromRight;
 
+    public GameObject[] deathSpawnOcjects;
+
     public Rigidbody2D rb{
         get{
             if(m_rb == null)
@@ -43,10 +45,10 @@ public class EnemyManager : MonoBehaviour
 
         if(knockbackCount > 0){
             if(knockfromRight){
-				rb.velocity = new Vector2 ( -knockback, knockback);
+				rb.velocity = new Vector2 ( knockback, knockback);
 			}else
 			{
-				rb.velocity = new Vector2 ( knockback, knockback);
+				rb.velocity = new Vector2 ( -knockback, knockback);
 			}
 			knockbackCount -= Time.deltaTime;
         }
@@ -87,6 +89,11 @@ public class EnemyManager : MonoBehaviour
 
     public void Die(){
         GameManagerGeral.instance.AddSleepReward(sleepReward);
+        
+        foreach (var obj in deathSpawnOcjects)
+        {
+            Instantiate(obj, transform.position, transform.rotation);
+        }
         Destroy(gameObject);
     }
 

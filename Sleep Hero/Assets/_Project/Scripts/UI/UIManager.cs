@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject[] HealthHearts;
 
+    public Text Score;
+    public GameObject finalScreen;
 
    
     // Start is called before the first frame update
@@ -61,6 +63,15 @@ public class UIManager : MonoBehaviour
         
       
 
+    }
+
+    public void ActivateFinalScreen(){
+        finalScreen.SetActive(true);
+
+    }
+
+    public void DesactivateFinalScreen(){
+        finalScreen.SetActive(false);
     }
 
 

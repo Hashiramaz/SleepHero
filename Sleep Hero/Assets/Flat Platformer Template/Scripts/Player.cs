@@ -27,6 +27,17 @@ public class Player : MonoBehaviour {
     private Vector2 _inputAxis;
     private RaycastHit2D _hit;
 
+    public Animator anim{
+        get{
+            if(m_anim == null)
+            m_anim = transform.root.GetComponent<Animator>();
+            return m_anim;
+
+        }
+    }
+
+    public Animator m_anim;
+
 	void Start ()
     {
         rig = gameObject.GetComponent<Rigidbody2D>();
@@ -41,9 +52,17 @@ public class Player : MonoBehaviour {
             {
                 _canJump = true;
                 _canWalk = true;
+            
+                anim.SetBool("IsGrounded", true); 
             }
+        
+//            Debug.Log(_hit.transform.gameObject.name);
         }
-        else _canJump = false;
+        else{
+        _canJump = false;
+        anim.SetBool("IsGrounded",false);
+        } 
+            
 
         _inputAxis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (_inputAxis.y > 0 && _canJump)
@@ -52,6 +71,7 @@ public class Player : MonoBehaviour {
             _isJump = true;
         }
         HeroBody.SetFloat("HSpeed",Mathf.Abs(rig.velocity.x));
+        anim.SetFloat("YVelocity",rig.velocity.y);
     }
 
     void FixedUpdate()
@@ -68,13 +88,13 @@ public class Player : MonoBehaviour {
         {
             rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.localScale = new Vector3(_startScale, _startScale, 1);
-            _Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
+            //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
         }
         if (mirror)
         {
             rot = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg;
             transform.localScale = new Vector3(-_startScale, _startScale, 1);
-            _Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
+            //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
         }
 
         if (_inputAxis.x != 0)
@@ -95,11 +115,14 @@ public class Player : MonoBehaviour {
 
         if (_isJump)
         {
+            
             rig.AddForce(new Vector2(0, JumpForce));
             _Legs.clip = _jump;
             _Legs.Play();
             _canJump = false;
             _isJump = false;
+
+            anim.SetTrigger("Jump");
         }
 
 

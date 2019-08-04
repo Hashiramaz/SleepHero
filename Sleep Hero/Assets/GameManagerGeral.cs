@@ -63,6 +63,7 @@ public    void StartGame(){
 
         isPlaying = true;
         StartCoroutine(SleepRoutine());
+        uIManager.DesactivateFinalScreen();
     
     }
 
@@ -70,8 +71,7 @@ public    void StartGame(){
     
     public void StopGame(){
         isPlaying = false;
-        SceneManager.LoadScene("FinalLevel");
-
+        uIManager.ActivateFinalScreen();
     }   
 
     
@@ -106,5 +106,12 @@ public    void StartGame(){
     }
 
 
+    public void BackToMenu(){
+        SceneManager.LoadScene(0);
+    }
 
+    public void PlayAgain(){
+        SceneManager.LoadScene("FinalLevel");
+        
+    }
 }
