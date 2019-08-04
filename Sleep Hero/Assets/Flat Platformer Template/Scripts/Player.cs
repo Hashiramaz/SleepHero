@@ -13,6 +13,12 @@ public class Player : MonoBehaviour {
     public Camera cam;
     public bool mirror;
 
+    public Animator HeroBody;
+
+
+
+
+
 
     private bool _canJump, _canWalk;
     private bool _isWalk, _isJump;
@@ -45,6 +51,7 @@ public class Player : MonoBehaviour {
             _canWalk = false;
             _isJump = true;
         }
+        HeroBody.SetFloat("HSpeed",Mathf.Abs(rig.velocity.x));
     }
 
     void FixedUpdate()
