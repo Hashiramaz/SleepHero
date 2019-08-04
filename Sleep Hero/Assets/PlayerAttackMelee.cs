@@ -8,6 +8,16 @@ public class PlayerAttackMelee : MonoBehaviour
      public float startTimeBtwAttack;
     public WeaponBehaviour weapon;
 
+    public Animator anim{
+        get{
+            if(m_anim == null)
+            m_anim = transform.root.GetComponent<Animator>();
+            return m_anim;
+
+        }
+    }
+
+    public Animator m_anim;
     public bool isAttacking;
     // Start is called before the first frame update
     void Start()
@@ -47,10 +57,19 @@ public class PlayerAttackMelee : MonoBehaviour
        weapon.gameObject.SetActive(true);
 
         isAttacking = true;
+    
+        //Set Animation
+         //anim.SetBool("IsAttacking", true);
+         anim.SetTrigger("Attack");
+        
         Debug.Log("Attacking!");
        yield return new WaitForSeconds (0.3f);
        weapon.gameObject.SetActive(false);
         Debug.Log("Stop Attack");
        isAttacking =  false;
+
+       //set animatiojn
+       anim.SetBool("IsAttacking", false);
+
    }
 }
