@@ -23,16 +23,16 @@ public class SpawnerManager : MonoBehaviour
 
     void SpawnInRandomSpawner(){
 
-        // EnemySpawner spawner =  spawners[Random.Range(0,spawners.Length)];
+        EnemySpawner spawner =  spawners[Random.Range(0,spawners.Length)];
 
-        // if(!spawner.isVisible){
-        //     spawner.SpawnEnemy();
-        // }else
-        // {
-        //     SpawnInRandomSpawner();
-        // }
+        if(!spawner.isVisible){
+            spawner.SpawnEnemy();
+        }else
+        {
+            SpawnInRandomSpawner();
+        }
 
-        spawners[Random.Range(0,spawners.Length)].SpawnEnemy();
+        //spawners[Random.Range(0,spawners.Length)].SpawnEnemy();
         
         //spawners[Random.Range(0,spawners.Length)].SpawnEnemy();
 

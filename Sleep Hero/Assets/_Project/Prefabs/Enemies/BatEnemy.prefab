@@ -156,7 +156,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  sleepReward: 10
   speed: 0
+  knockback: 4
+  knockBackLength: 0.3
+  knockbackCount: 0
+  knockfromRight: 0
+  m_rb: {fileID: 0}
 --- !u!58 &4767028649516137564
 CircleCollider2D:
   m_ObjectHideFlags: 0
