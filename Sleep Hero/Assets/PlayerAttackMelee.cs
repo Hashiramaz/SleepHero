@@ -8,6 +8,7 @@ public class PlayerAttackMelee : MonoBehaviour
      public float startTimeBtwAttack;
     public WeaponBehaviour weapon;
 
+    public ParticleSystem attackFX;    
     public Animator anim{
         get{
             if(m_anim == null)
@@ -57,7 +58,8 @@ public class PlayerAttackMelee : MonoBehaviour
        weapon.gameObject.SetActive(true);
 
         isAttacking = true;
-    
+
+        attackFX.Play();
         //Set Animation
          //anim.SetBool("IsAttacking", true);
          anim.SetTrigger("Attack");

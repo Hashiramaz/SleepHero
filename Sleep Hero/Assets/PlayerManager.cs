@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     [Header("References")]
     public GameObject graphics;
 
-    public Rigidbody2D rb{
+    protected Rigidbody2D rb{
         get{
             if(m_rb == null)
                 m_rb = GetComponent<Rigidbody2D>();
@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public Rigidbody2D m_rb;
+    protected Rigidbody2D m_rb;
 
     [Header("Debug Values")]
     public float horizontalVelocity;
