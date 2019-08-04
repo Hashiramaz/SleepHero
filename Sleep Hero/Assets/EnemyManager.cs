@@ -65,7 +65,7 @@ public class EnemyManager : MonoBehaviour
         health -= damage;
        
        
-       
+       FindObjectOfType<AudioManager>().Play("MonsterHurt");
        knockbackCount = knockBackLength;
         
             if(_fromRight)
@@ -89,7 +89,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Die(){
         GameManagerGeral.instance.AddSleepReward(sleepReward);
-        
+        FindObjectOfType<AudioManager>().Play("MonsterPop");
         foreach (var obj in deathSpawnOcjects)
         {
             Instantiate(obj, transform.position, transform.rotation);

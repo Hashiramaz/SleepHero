@@ -66,7 +66,8 @@ public class PlayerAttackMelee : MonoBehaviour
 
    IEnumerator StartWeaponObject(){
        weapon.gameObject.SetActive(true);
-
+        
+        FindObjectOfType<AudioManager>().Play("Attack");
         isAttacking = true;
 
         attackFX.Play();
