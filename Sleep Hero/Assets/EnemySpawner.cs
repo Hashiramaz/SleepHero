@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool isVisible;
 
+    public int enemytype = 1;
 
     UnityEngine.Camera cam;
 
@@ -26,7 +27,10 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, spawnArea.GetRandomPoint(),transform.rotation);
         
         //enemy.GetComponent<AIDestinationSetter>().target = playerreference.transform;
-        enemy.GetComponent<EnemyAI>().target = playerreference.transform;
+        if(enemytype == 1)
+            enemy.GetComponent<EnemyAI>().target = playerreference.transform;
+
+        
     }
 
 
