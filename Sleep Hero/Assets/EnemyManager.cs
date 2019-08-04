@@ -45,10 +45,10 @@ public class EnemyManager : MonoBehaviour
 
         if(knockbackCount > 0){
             if(knockfromRight){
-				rb.velocity = new Vector2 ( -knockback, knockback);
+				rb.velocity = new Vector2 ( knockback, knockback);
 			}else
 			{
-				rb.velocity = new Vector2 ( knockback, knockback);
+				rb.velocity = new Vector2 ( -knockback, knockback);
 			}
 			knockbackCount -= Time.deltaTime;
         }

@@ -16,6 +16,15 @@ public class PlayerAttack : MonoBehaviour
 
    public GameObject attackObject;
 
+
+    public Player player{
+        get{
+            if(m_player == null)
+                m_player = GetComponent<Player>();
+                return m_player;
+        }
+    }
+    public Player m_player;
    public bool isAttacking;
    
 

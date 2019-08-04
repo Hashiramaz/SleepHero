@@ -19,6 +19,15 @@ public class PlayerAttackMelee : MonoBehaviour
     }
 
     public Animator m_anim;
+
+        public Player player{
+        get{
+            if(m_player == null)
+                m_player = GetComponent<Player>();
+                return m_player;
+        }
+    }
+    public Player m_player;
     public bool isAttacking;
     // Start is called before the first frame update
     void Start()
@@ -63,6 +72,9 @@ public class PlayerAttackMelee : MonoBehaviour
         //Set Animation
          //anim.SetBool("IsAttacking", true);
          anim.SetTrigger("Attack");
+
+        //Set Camer Animation
+        player.cam.GetComponent<Animator>().SetTrigger("Shake");        
         
         Debug.Log("Attacking!");
        yield return new WaitForSeconds (0.3f);
