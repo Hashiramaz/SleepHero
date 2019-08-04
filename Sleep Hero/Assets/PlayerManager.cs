@@ -75,7 +75,7 @@ public class PlayerManager : MonoBehaviour
         health -= amount;
         
         
-
+        FindObjectOfType<AudioManager>().Play("PlayerHurt");
         GameManagerGeral.instance.uIManager.RefreshPlayerHealth((int)health);
         if(health <= 0){
             Die();
