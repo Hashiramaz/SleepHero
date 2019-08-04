@@ -6,6 +6,7 @@ public class PlayerAttackMelee : MonoBehaviour
 {
     public float timeBtwAttack;
      public float startTimeBtwAttack;
+     public float attackduration= 0.1f;
     public WeaponBehaviour weapon;
 
     public ParticleSystem attackFX;    
@@ -77,7 +78,7 @@ public class PlayerAttackMelee : MonoBehaviour
         player.cam.GetComponent<Animator>().SetTrigger("Shake");        
         
         Debug.Log("Attacking!");
-       yield return new WaitForSeconds (0.3f);
+       yield return new WaitForSeconds (attackduration);
        weapon.gameObject.SetActive(false);
         Debug.Log("Stop Attack");
        isAttacking =  false;
