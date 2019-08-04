@@ -28,10 +28,13 @@ public class GameManagerGeral : MonoBehaviour
 
     //public int level;
     public float[] Difficulty;
+    public int maxLevel=5;
+    public int actualLevel;
 
 
-    public float interval;
+    public float Sleepinterval;
     
+    public float levelInterval = 25f;
 
 
 private void Awake() {
@@ -59,10 +62,13 @@ private void Start() {
     }
 
 
-public    void StartGame(){
+    public void StartGame(){
 
         isPlaying = true;
         StartCoroutine(SleepRoutine());
+        StartLevelRoutine();
+
+
         uIManager.DesactivateFinalScreen();
     
     }
@@ -89,7 +95,7 @@ public    void StartGame(){
         {
             actualSleep -= sleepLoseAmount;
             uIManager.RefreshUI();
-            yield return new WaitForSeconds(interval);
+            yield return new WaitForSeconds(Sleepinterval);
 
 
         }
@@ -97,7 +103,8 @@ public    void StartGame(){
 
 
     void SetDifficulty(int level){
-       sleepLoseAmount = Difficulty[level];
+       sleepLoseAmount = Difficulty[level-1];
+       actualLevel = level;
 
     }
 
@@ -114,4 +121,31 @@ public    void StartGame(){
         SceneManager.LoadScene("FinalLevel");
         
     }
+
+
+
+    public void StartLevelRoutine(){
+        StartCoroutine(LevelIncreaseRoutine());
+    }
+
+
+    IEnumerator LevelIncreaseRoutine(){
+      while(isPlaying){
+
+        yield return new WaitForSeconds(levelInterval);
+        if(actualLevel < maxLevel){
+            SetDifficulty (actualLevel + 1);
+            
+        }
+
+        uIManager.ActivateLevelWarning();
+        yield return new WaitForSeconds (2f);
+        uIManager.DesactivateLevelWarning();
+      }
+    
+    }
+
+
+
+
 }

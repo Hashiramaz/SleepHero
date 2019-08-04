@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public Text Score;
     public GameObject finalScreen;
 
-   
+    public GameObject warningLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +73,17 @@ public class UIManager : MonoBehaviour
     public void DesactivateFinalScreen(){
         finalScreen.SetActive(false);
     }
+
+
+    public void ActivateLevelWarning(){
+        warningLevel.SetActive(true);
+
+    }
+
+    public void DesactivateLevelWarning(){
+        warningLevel.SetActive(false);
+    }
+
 
 
 
